@@ -46,6 +46,7 @@ class CounterScene extends Component {
   }
 
   onSave() {
+    this.props.onCountChanged(this.state.count);
     this.props.navigator.pop();
   }
 
@@ -78,6 +79,7 @@ class CounterScene extends Component {
 CounterScene.propTypes = {
   count: React.PropTypes.number.isRequired,
   navigator: React.PropTypes.object.isRequired,
+  onCountChanged: React.PropTypes.func.isRequired,
 };
 
 export default CounterScene;

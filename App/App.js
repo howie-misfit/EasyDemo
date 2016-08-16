@@ -4,7 +4,6 @@ import {
   Text,
   TouchableHighlight,
   View,
-  NavigatorIOS,
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -32,17 +31,26 @@ class App extends Component {
       count: 1,
     };
     this.onForwardHandler = this.onForward.bind(this);
+    this.onCountChangedHandle = this.onCountChanged.bind(this);
+  }
+
+  onCountChanged(newCount) {
+    this.setState({ count: newCount });
+    console.log('countChanged:', newCount);
   }
 
   onForward() {
     this.props.navigator.push({
       component: CounterScene,
       title: 'CounterScene',
-      passProps: { count: this.state.count },
+      passProps: { count: this.state.count,
+       onCountChanged: this.onCountChangedHandle,
+      },
     });
   }
 
   render() {
+    console.log('render App');
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
