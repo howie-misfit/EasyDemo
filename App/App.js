@@ -4,6 +4,7 @@ import {
   Text,
   TouchableHighlight,
   View,
+  NavigatorIOS,
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -22,26 +23,23 @@ const styles = StyleSheet.create({
   },
 });
 
+import CounterScene from './CounterScene';
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       count: 1,
     };
-    this.onIncreaseHandler = this.onIncrease.bind(this);
-    this.onDecreaseHandler = this.onDecrease.bind(this);
+    this.onForwardHandler = this.onForward.bind(this);
   }
 
-  onIncrease() {
-    const count = this.state.count + 1;
-    this.setState({ count });
-    console.log('newCount:', count);
-  }
-
-  onDecrease() {
-    const count = this.state.count - 1;
-    this.setState({ count });
-    console.log('newCount:', count);
+  onForward() {
+    this.props.navigator.push({
+      component: CounterScene,
+      title: 'CounterScene',
+      passProps: { count: this.state.count },
+    });
   }
 
   render() {
@@ -50,19 +48,18 @@ class App extends Component {
         <Text style={styles.welcome}>
           Count: {this.state.count}
         </Text>
-        <TouchableHighlight onPress={this.onIncreaseHandler}>
+        <TouchableHighlight onPress={this.onForwardHandler}>
           <Text style={styles.button}>
-            Increase
-          </Text>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={this.onDecreaseHandler}>
-          <Text style={styles.button}>
-            Decrease
+            ChangeCount
           </Text>
         </TouchableHighlight>
       </View>
     );
   }
 }
+
+App.propTypes = {
+  navigator: React.PropTypes.object.isRequired,
+};
 
 export default App;

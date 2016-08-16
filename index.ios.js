@@ -7,6 +7,7 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
+  NavigatorIOS,
 } from 'react-native';
 
 import App from './App/App';
@@ -14,7 +15,13 @@ import App from './App/App';
 class EasyDemo extends Component {
   render() {
     return (
-      <App />
+      <NavigatorIOS
+        initialRoute={{
+          component: App,
+          title: 'Counter',
+        }}
+        style={{ flex: 1 }}
+      />
     );
   }
 }
