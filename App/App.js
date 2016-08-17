@@ -34,6 +34,10 @@ class App extends Component {
     this.onCountChangedHandle = this.onCountChanged.bind(this);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.count !== nextState.count;
+  }
+
   onCountChanged(newCount) {
     this.setState({ count: newCount });
     console.log('countChanged:', newCount);

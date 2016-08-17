@@ -18,11 +18,11 @@
 {
   NSURL *jsCodeLocation;
 
-  if (TARGET_IPHONE_SIMULATOR) {
-    [[RCTBundleURLProvider sharedSettings] setJsLocation:@"localhost"];
-  }else {
-    [[RCTBundleURLProvider sharedSettings] setJsLocation:@"192.168.3.22"];
-  }
+//  if (TARGET_IPHONE_SIMULATOR) {
+//    [[RCTBundleURLProvider sharedSettings] setJsLocation:@"localhost"];
+//  }else {
+//    [[RCTBundleURLProvider sharedSettings] setJsLocation:@"192.168.3.22"];
+//  }
   
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
 
