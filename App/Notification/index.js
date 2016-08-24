@@ -14,45 +14,45 @@ export default class Notification extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'BadgeExample',
+      selectedTab: 'Badge',
     };
   }
 
   render() {
     return (
       <TabBarIOS
-        unselectedTintColor="yellow"
-        tintColor="white"
+        unselectedTintColor="white"
+        tintColor="blue"
         barTintColor="darkslateblue"
       >
         <TabBarIOS.Item
-          title="BadgeExample"
-          selected={this.state.selectedTab === 'BadgeExample'}
+          title="Badge"
+          selected={this.state.selectedTab === 'Badge'}
           onPress={() => {
             this.setState({
-              selectedTab: 'BadgeExample',
+              selectedTab: 'Badge',
             });
           }}
         >
           <BadgeExample />
         </TabBarIOS.Item>
         <TabBarIOS.Item
-          title="NotificationExample"
-          selected={this.state.selectedTab === 'NotificationExample'}
+          title="Notification"
+          selected={this.state.selectedTab === 'Notification'}
           onPress={() => {
             this.setState({
-              selectedTab: 'NotificationExample',
+              selectedTab: 'Notification',
             });
           }}
         >
           <NotificationExample />
         </TabBarIOS.Item>
         <TabBarIOS.Item
-          title="PermissionExample"
-          selected={this.state.selectedTab === 'PermissionExample'}
+          title="Permission"
+          selected={this.state.selectedTab === 'Permission'}
           onPress={() => {
             this.setState({
-              selectedTab: 'PermissionExample',
+              selectedTab: 'Permission',
             });
           }}
         >

@@ -4,6 +4,7 @@ import {
   PushNotificationIOS,
   StyleSheet,
   View,
+  DeviceEventEmitter,
 } from 'react-native';
 
 import { Button } from '../Common';
@@ -11,11 +12,10 @@ import { Button } from '../Common';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 80,
-    justifyContent: 'space-between',
-    backgroundColor: '#F5FCFF',
     flexDirection: 'column',
+    justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
 });
 
@@ -32,28 +32,6 @@ class NotificationExample extends Component {
     PushNotificationIOS.removeEventListener('notification', this.onNotification);
     // Remove listener for local notifications
     PushNotificationIOS.removeEventListener('localNotification', this.onLocalNotification);
-  }
-
-  sendNotification() {
-    require('RCTDeviceEventEmitter').emit('remoteNotificationReceived', {
-      aps: {
-        alert: 'Sample notification',
-        badge: '+1',
-        sound: 'default',
-        category: 'REACT_NATIVE',
-      },
-    });
-  }
-
-  sendLocalNotification() {
-    require('RCTDeviceEventEmitter').emit('localNotificationReceived', {
-      aps: {
-        alert: 'Sample local notification',
-        badge: '+1',
-        sound: 'default',
-        category: 'REACT_NATIVE',
-      },
-    });
   }
 
   onNotification(notification) {
@@ -78,6 +56,28 @@ class NotificationExample extends Component {
     );
   }
 
+  sendLocalNotification() {
+    DeviceEventEmitter.emit('localNotificationReceived', {
+      aps: {
+        alert: 'Sample local notification',
+        badge: '+1',
+        sound: 'default',
+        category: 'REACT_NATIVE',
+      },
+    });
+  }
+
+  sendNotification() {
+    DeviceEventEmitter.emit('remoteNotificationReceived', {
+      aps: {
+        alert: 'Sample notification',
+        badge: '+1',
+        sound: 'default',
+        category: 'REACT_NATIVE',
+      },
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -85,7 +85,6 @@ class NotificationExample extends Component {
           onPress={this.sendNotification}
           label="Send fake notification"
         />
-
         <Button
           onPress={this.sendLocalNotification}
           label="Send fake local notification"

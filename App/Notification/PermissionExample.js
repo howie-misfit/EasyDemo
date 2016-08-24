@@ -6,16 +6,13 @@ import {
   View,
 } from 'react-native';
 
-import { Button } from '../Common';
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 80,
-    justifyContent: 'space-between',
-    backgroundColor: '#F5FCFF',
     flexDirection: 'column',
+    justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
 });
 
@@ -27,7 +24,12 @@ export default class PermissionExample extends Component {
     this.showPermissions = this.showPermissions.bind(this);
   }
 
+  componentDidMount() {
+    this.showPermissions();
+  }
+
   showPermissions() {
+    console.log('showPermissions');
     PushNotificationIOS.checkPermissions((permissions) => {
       this.setState({ permissions });
     });
@@ -37,10 +39,6 @@ export default class PermissionExample extends Component {
     return (
       <View style={styles.container}>
         <Text>Notifications Permissions:</Text>
-        <Button
-          onPress={this.showPermissions}
-          label="Show enabled permissions"
-        />
         <Text>
           {JSON.stringify(this.state.permissions)}
         </Text>

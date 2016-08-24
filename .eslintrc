@@ -3,5 +3,6 @@
   "rules": {
     'react/prefer-stateless-function': "off",
     "no-console": "off",
+    "prefer-template": "off",
   },
 }

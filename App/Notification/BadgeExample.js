@@ -10,19 +10,18 @@ import { Button } from '../Common';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 80,
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     backgroundColor: '#F5FCFF',
-    flexDirection: 'column',
+    borderColor: '#ff0000',
+    borderWidth: 10,
+    flexDirection: 'row',
     alignItems: 'center',
   },
-  button: {
-    padding: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
+  leftButton: {
+    marginLeft: 10,
   },
-  buttonLabel: {
-    color: 'blue',
+  rightButton: {
+    marginRight: 20,
   },
 });
 
@@ -49,12 +48,14 @@ export default class BadgeExample extends Component {
     return (
       <View style={styles.container}>
         <Button
+          style={styles.leftButton}
           onPress={() => PushNotificationIOS.setApplicationIconBadgeNumber(42)}
-          label="Set app's icon badge to 42"
+          label="update badge"
         />
         <Button
+          style={styles.rightButton}
           onPress={() => PushNotificationIOS.setApplicationIconBadgeNumber(0)}
-          label="Clear app's icon badge"
+          label="clear"
         />
       </View>
     );

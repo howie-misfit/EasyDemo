@@ -13,6 +13,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
     flexDirection: 'row',
     alignItems: 'center',
+    borderColor: '#ff0000',
+    borderWidth: 2,
   },
   button: {
     borderColor: 'blue',

@@ -10,6 +10,8 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
+    borderColor: '#00ff00',
+    borderWidth: 2,
   },
   buttonLabel: {
     color: 'blue',
