@@ -1,3 +1,7 @@
 {
-  "extends": "airbnb"
+  "extends": "airbnb",
+  "rules": {
+    'react/prefer-stateless-function': "off",
+    "no-console": "off",
+  },
 }

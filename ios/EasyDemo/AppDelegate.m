@@ -20,13 +20,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   NSURL *jsCodeLocation;
-
-//  if (TARGET_IPHONE_SIMULATOR) {
-//    [[RCTBundleURLProvider sharedSettings] setJsLocation:@"localhost"];
-//  }else {
-//    [[RCTBundleURLProvider sharedSettings] setJsLocation:@"192.168.3.22"];
-//  }
-  
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
@@ -51,6 +44,8 @@
 // Required for the register event.
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
+  NSString *deviceTokenString = [NSString stringWithFormat:@"Device Token=%@",deviceToken];
+  NSLog(@"This is device token: %@", deviceTokenString);
   [RCTPushNotificationManager didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 // Required for the notification event.

@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
 });
 
 import CounterScene from './CounterScene';
+import Notification from './Notification';
 
 class App extends Component {
   constructor(props) {
@@ -31,6 +32,7 @@ class App extends Component {
       count: 1,
     };
     this.onForwardHandler = this.onForward.bind(this);
+    this.onNotificationButtonTapped = this.onNotificationButtonTapped.bind(this);
     this.onCountChangedHandle = this.onCountChanged.bind(this);
   }
 
@@ -53,6 +55,13 @@ class App extends Component {
     });
   }
 
+  onNotificationButtonTapped() {
+    this.props.navigator.push({
+      component: Notification,
+      title: 'Notification',
+    });
+  }
+
   render() {
     console.log('render App');
     return (
@@ -63,6 +72,11 @@ class App extends Component {
         <TouchableHighlight onPress={this.onForwardHandler}>
           <Text style={styles.button}>
             ChangeCount
+          </Text>
+        </TouchableHighlight>
+        <TouchableHighlight onPress={this.onNotificationButtonTapped}>
+          <Text style={styles.button}>
+            Notification
           </Text>
         </TouchableHighlight>
       </View>
