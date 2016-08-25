@@ -3,7 +3,10 @@
 var apn = require ("../index.js");
 
 var tokens = ["75b160f9607dfcc0c84a265b199319dab998362a2e5886e75e5f1c178f6d3f05",
-	"b167844cc620daf01b27eb39bc0226927b907cef713c55879f6d57b807430754"];
+	"b167844cc620daf01b27eb39bc0226927b907cef713c55879f6d57b807430754",
+	"0984e22d4c5b8b4b37e7b1243253a282a711bf7388756bed2f558cf86bacf17c",
+	"92d48899016748cdb566679228dd2e3767ca887660d168a9d73ba81daee21d81",
+];
 
 if(tokens[0] === "<insert token here>") {
 	console.log("Please set token to a valid device token for the push notification service");
@@ -68,3 +71,13 @@ function pushSomeNotifications() {
 }
 
 pushSomeNotifications();
+
+function disconnect() {
+	setTimeout(function() {
+		console.log("timeout");
+		service.shutdown();
+		process.exit();
+	}, 3000);
+}
+
+disconnect();
